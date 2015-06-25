@@ -45,7 +45,8 @@ DEFAULT_USER_AGENT = {
     }
 }
 
-DEFAULT_REFERRER = {
+DEFAULT_EXTERNAL_REFERRER = {
+    "type" => "external",
     "source" => "http://www.referrer.com/some/ad?param1=foo&param2=bar/#someplace",
     "protocol" => "http",
     "domain" => "www.referrer.com"

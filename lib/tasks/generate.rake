@@ -21,7 +21,17 @@ namespace :visit do
 
       page_view["page"] = page
       page_view["user_agent"] = DEFAULT_USER_AGENT
-      page_view["referrer"] = DEFAULT_REFERRER
+
+      if rand(10) < 5
+        page_view["referrer"] = DEFAULT_EXTERNAL_REFERRER
+      else
+        referrer = {
+          "type" => "internal",
+          "source" => Landing.all.shuffle[0].url,
+          "keyword" => Keyword.all.shuffle[rand(Keyword.count)].word
+        }
+        page_view["referrer"] = referrer
+      end
       page_view["session"] = DEFAULT_SESSION
 
       visit_time = Time.now.advance(:minutes => -rand(10000))
