@@ -34,7 +34,7 @@ namespace :visit do
       end
       page_view["session"] = DEFAULT_SESSION
 
-      visit_time = Time.now.advance(:minutes => -rand(34560))
+      visit_time = Time.now.advance(:minutes => -rand(1440))
       at["timestamp"] = visit_time 
       at["day_of_week"] = visit_time.strftime("%A")
       at["hour_of_day"] = visit_time.hour
