@@ -1,6 +1,6 @@
 namespace :visit do
   task :generate_page_views => :environment do
-    for i in 0..100
+    for i in 0..20
       page_view = {}
       keyword_views = []
       page = {}
@@ -34,7 +34,8 @@ namespace :visit do
       end
       page_view["session"] = DEFAULT_SESSION
 
-      visit_time = Time.now.advance(:minutes => -rand(1440))
+      # visit_time = Time.now.advance(:minutes => -rand(1440))
+      visit_time = Time.now
       at["timestamp"] = visit_time 
       at["day_of_week"] = visit_time.strftime("%A")
       at["hour_of_day"] = visit_time.hour
@@ -42,8 +43,11 @@ namespace :visit do
       page_view["at"] = at
 
       # puts page_view.to_json
-      putc '.'
-      Keen.publish(:page_views, page_view)
+      # putc '.'
+      if rand >= 0.5
+        # Publish about 50% of the page views
+        Keen.publish(:page_views, page_view)
+      end
     end
   end
 end

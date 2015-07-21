@@ -25,9 +25,8 @@ module Keenmedia
   end
 end
 
-
-ENV['KEEN_PROJECT_ID']=''
-ENV['KEEN_WRITE_KEY']=''
+# ENV['KEEN_PROJECT_ID']=
+# ENV['KEEN_WRITE_KEY']=
 
 DEFAULT_USER_AGENT = {
   "browser" => {
